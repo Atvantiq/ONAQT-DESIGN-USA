@@ -3541,31 +3541,256 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .main-wrapper {
-                margin-left: 0;
-            }
-            
-            .content-area {
-                padding: 20px;
-            }
-            
-            .quick-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .control-bar {
-                flex-direction: column;
-            }
-            
-            .search-container {
-                width: 100%;
-            }
-        }
+        /* ════════════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE LAYER — applies at <= 1024px (tablet) and <= 640px (phone)
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Hamburger button — hidden on desktop, shown on mobile */
+.mobile-hamburger {
+    display: none;
+    width: 40px; height: 40px; border-radius: 10px;
+    border: 1px solid var(--gray-200);
+    background: var(--white);
+    cursor: pointer;
+    align-items: center; justify-content: center;
+    color: var(--gray-700);
+    flex-shrink: 0;
+    margin-right: 10px;
+    transition: var(--transition);
+}
+.mobile-hamburger:hover { border-color: var(--primary); color: var(--primary); }
+.mobile-hamburger svg { width: 20px; height: 20px; }
+[data-dark="true"] .mobile-hamburger {
+    background: #1e2130; border-color: #2d3145; color: var(--gray-300);
+}
+
+/* Backdrop for sidebar drawer — covers content while sidebar is open */
+.mobile-sidebar-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+.mobile-sidebar-backdrop.active {
+    display: block; opacity: 1;
+}
+
+/* ───────── TABLET (≤ 1024px) — collapse Dashboard 2-col grid ───────── */
+@media (max-width: 1024px) {
+    /* Dashboard: collapse the 2-col grid (main + Onaqt Intelligence) to 1-col */
+    #page-dashboard .dash-grid {
+        grid-template-columns: 1fr !important;
+    }
+    #page-dashboard .dash-side {
+        position: static !important;
+        max-width: 100%;
+    }
+    #page-dashboard .ai-panel {
+        max-height: 600px;
+    }
+
+    /* KPI / stat cards: tighter columns */
+    .quick-stats,
+    #page-dashboard .dash-kpi-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* ───────── PHONE (≤ 768px) — sidebar drawer, header reflow ───────── */
+@media (max-width: 768px) {
+    /* Sidebar becomes a slide-in drawer */
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 280px;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+    }
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    /* Main content takes full width */
+    .main-wrapper {
+        margin-left: 0 !important;
+    }
+
+    /* Header reflow */
+    .header {
+        padding: 0 14px;
+        gap: 8px;
+    }
+    .mobile-hamburger {
+        display: inline-flex !important;
+    }
+    .breadcrumb {
+        font-size: 13px;
+        flex: 1; min-width: 0;
+    }
+    .breadcrumb-link span,
+    .breadcrumb-link {
+        display: none !important;
+    }
+    .breadcrumb-link svg { display: inline-block; }
+    .breadcrumb-separator { display: none; }
+    .breadcrumb-current {
+        font-size: 14px; font-weight: 600;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .header-actions { gap: 6px; }
+    .month-indicator { display: none; }
+    .btn-start-day {
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+    }
+    .btn-start-day svg { width: 14px; height: 14px; }
+    /* Hide button label, keep icon only */
+    .btn-start-day {
+        font-size: 0 !important;
+        gap: 0 !important;
+        padding: 8px !important;
+        width: 38px; height: 38px;
+        justify-content: center;
+    }
+    .btn-start-day svg { display: block; }
+    .user-info { display: none !important; }
+    .user-menu {
+        padding: 4px !important;
+        gap: 0 !important;
+    }
+    .user-menu > svg { display: none !important; }
+
+    /* Page content padding */
+    .page-content,
+    .content-area {
+        padding: 14px !important;
+    }
+
+    /* Tables: keep horizontal scroll INSIDE the table-wrap, not the page */
+    .table-card,
+    .table-wrap {
+        overflow-x: auto !important;
+    }
+
+    /* Dashboard tweaks */
+    #page-dashboard .dash-greeting {
+        font-size: 22px !important;
+    }
+    #page-dashboard .dash-kpi-row,
+    .quick-stats {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+    }
+    #page-dashboard .dash-kpi-card {
+        padding: 14px !important;
+    }
+    #page-dashboard .dash-kpi-value {
+        font-size: 22px !important;
+    }
+    #page-dashboard .ai-panel {
+        max-height: 520px;
+    }
+    #page-dashboard .ai-hero-title {
+        font-size: 20px !important;
+    }
+
+    /* Settings — already responsive grid via @media in scoped CSS, but
+       enforce single column on phone */
+    #page-settings .st-fields {
+        grid-template-columns: 1fr !important;
+    }
+    #page-settings .st-qb-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    #page-settings .st-qb-actions {
+        flex-direction: column;
+    }
+    #page-settings .st-qb-actions .st-btn {
+        width: 100%; justify-content: center;
+    }
+    #page-settings .st-qb-actions .st-btn-danger {
+        margin-left: 0 !important;
+    }
+
+    /* Modal overlays — fit phone screen with margin */
+    .wiz-overlay .wiz-box,
+    .auth-modal-box,
+    .role-editor-overlay > div:not(.role-editor-backdrop),
+    .role-drawer-overlay > div:not(.role-drawer-backdrop) {
+        max-width: calc(100vw - 24px) !important;
+        max-height: calc(100vh - 40px) !important;
+        width: calc(100vw - 24px) !important;
+    }
+
+    /* Right-side drawers (Roles, PO panels, Filter panels) go full-screen */
+    .role-drawer,
+    .emp-filter-panel,
+    .reim-filter-panel,
+    .at-filter-panel,
+    .proj-filter-panel,
+    .filter-panel,
+    #empColumnCustomizer,
+    #columnCustomizer,
+    #exportModal {
+        width: 100vw !important;
+        max-width: 100vw !important;
+    }
+
+    /* Login screen — stack the two panels vertically; hide brand panel */
+    #loginScreen .page {
+        grid-template-columns: 1fr !important;
+    }
+    #loginScreen .left-panel { display: none !important; }
+    #loginScreen .right-panel {
+        padding: 24px 18px !important;
+    }
+    #loginScreen .login-card {
+        max-width: 100% !important;
+    }
+    #loginScreen .right-controls {
+        position: absolute; top: 12px; right: 12px;
+    }
+
+    /* Top performers, recent activity etc. — full width tiles */
+    #page-dashboard .top-performers-grid,
+    #page-dashboard .recent-grid,
+    #page-dashboard .insights-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Onaqt Intelligence panel — when stacked below, give it a sane height */
+    #page-dashboard .ai-panel {
+        max-height: 540px !important;
+    }
+}
+
+/* ───────── SMALL PHONE (≤ 480px) — final tightening ───────── */
+@media (max-width: 480px) {
+    .header { padding: 0 10px; height: 56px; }
+    .breadcrumb-current { font-size: 13px; }
+    .mobile-hamburger { width: 36px; height: 36px; }
+    .user-avatar { width: 32px; height: 32px; }
+    .header-dark-btn { width: 36px; height: 36px; }
+
+    /* Dashboard KPIs single column on tiny phones */
+    #page-dashboard .dash-kpi-row,
+    .quick-stats {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Settings hero tiles 1 column */
+    #page-settings .st-qb-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .page-content,
+    .content-area {
+        padding: 10px !important;
+    }
+}
+
+
 
         /* Loading Animation */
         @keyframes fadeIn {
@@ -14794,10 +15019,16 @@
             </div>
         </aside>
 
+        <!-- Mobile sidebar backdrop -->
+        <div class="mobile-sidebar-backdrop" id="mobileSidebarBackdrop" onclick="closeMobileSidebar()"></div>
+
         <!-- Main Content Wrapper -->
         <div class="main-wrapper">
             <!-- Premium Header -->
             <header class="header">
+                <button class="mobile-hamburger" onclick="toggleMobileSidebar()" aria-label="Open menu">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
                 <div class="breadcrumb">
                     <a href="#" class="breadcrumb-link">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -27884,7 +28115,37 @@ document.addEventListener('DOMContentLoaded', () => {
         /* ══════════════════════════════════════════
            PAGE NAVIGATION — Show/Hide System
         ══════════════════════════════════════════ */
+        /* ══════════════════════════════════════════
+           MOBILE SIDEBAR DRAWER TOGGLE
+        ══════════════════════════════════════════ */
+        function toggleMobileSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            var backdrop = document.getElementById('mobileSidebarBackdrop');
+            if (!sidebar) return;
+            var isOpen = sidebar.classList.contains('mobile-open');
+            if (isOpen) {
+                sidebar.classList.remove('mobile-open');
+                if (backdrop) backdrop.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                sidebar.classList.add('mobile-open');
+                if (backdrop) backdrop.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            var backdrop = document.getElementById('mobileSidebarBackdrop');
+            if (sidebar) sidebar.classList.remove('mobile-open');
+            if (backdrop) backdrop.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         function showPage(pageId, pageName) {
+            // Auto-close the mobile sidebar drawer when a nav link is clicked
+            // so the user actually sees the page they navigated to
+            try { closeMobileSidebar(); } catch(e) {}
             // If the target section doesn't exist (placeholder nav links from
             // the new sidebar pointing to pages that aren't built yet), stay
             // on the current page but update the breadcrumb so the user sees
