@@ -14823,6 +14823,29 @@
                     </a>
                 </div>
 
+                <!-- AI Command Center -->
+                <div class="nav-section-label">AI Command Center</div>
+                <div class="nav-item-collapsible active">
+                    <button class="nav-toggle" onclick="toggleNavItem(this)">
+                        <div class="nav-link-content">
+                            <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                            Agents
+                        </div>
+                        <svg class="nav-toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="nav-submenu">
+                        <a href="#" class="nav-submenu-link" onclick="showPage('ask-onaqt','Ask Onaqt');return false;">Ask Onaqt</a>
+                        <a href="#" class="nav-submenu-link" onclick="showPage('command-center','AI Command Center');return false;">Command Center</a>
+                        <a href="#" class="nav-submenu-link" onclick="showPage('suggestion-queue','Suggestion Queue');return false;">Suggestion Queue <span style="display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;background:var(--cta);color:#fff;border-radius:9px;font-size:10px;font-weight:700;margin-left:6px;">12</span></a>
+                        <a href="#" class="nav-submenu-link" onclick="showPage('agent-activity','Activity Feed');return false;">Activity Feed</a>
+                        <a href="#" class="nav-submenu-link" onclick="showPage('agent-performance','Agent Performance');return false;">Agent Performance</a>
+                    </div>
+                </div>
+
                 <!-- Time -->
                 <div class="nav-section-label">Time</div>
                 <div class="nav-item-collapsible active">
@@ -19978,6 +20001,1206 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- ═══ PAGE: AI COMMAND CENTER ═══ -->
+                <div id="page-command-center" class="page-section">
+                    <div class="page-header">
+                        <div class="stats-banner">
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+                                <div class="stats-banner-content"><div class="stats-banner-label">Open suggestions</div><div class="stats-banner-value">12</div></div>
+                            </div>
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div>
+                                <div class="stats-banner-content"><div class="stats-banner-label">Auto-approved (24h)</div><div class="stats-banner-value">183</div></div>
+                            </div>
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+                                <div class="stats-banner-content"><div class="stats-banner-label">Avg. agent accuracy</div><div class="stats-banner-value">96.2%</div></div>
+                            </div>
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                                <div class="stats-banner-content"><div class="stats-banner-label">Avg. latency</div><div class="stats-banner-value">1.4s</div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-card" style="padding:24px;">
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+                            <h3 style="margin:0;font-size:16px;font-weight:600;color:var(--gray-900);">Agent roster</h3>
+                            <span style="font-size:12px;color:var(--gray-500);">9 agents active</span>
+                        </div>
+                        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;">
+
+                            <div style="border:1px solid var(--gray-200);border-radius:10px;padding:16px;background:var(--white);">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                                    <div style="width:34px;height:34px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
+                                    <div style="flex:1;"><div style="font-weight:600;font-size:14px;color:var(--gray-900);">Allocator</div><div style="font-size:11px;color:var(--gray-500);">Pre-fills timesheet weeks</div></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500);"><span>Queue: <strong style="color:var(--gray-900);">8</strong></span><span>Accuracy: <strong style="color:#2d7a4d;">94%</strong></span></div>
+                            </div>
+
+                            <div style="border:1px solid var(--gray-200);border-radius:10px;padding:16px;background:var(--white);">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                                    <div style="width:34px;height:34px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg></div>
+                                    <div style="flex:1;"><div style="font-weight:600;font-size:14px;color:var(--gray-900);">Receipt</div><div style="font-size:11px;color:var(--gray-500);">Classifies expense receipts</div></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500);"><span>Queue: <strong style="color:var(--gray-900);">3</strong></span><span>Accuracy: <strong style="color:#2d7a4d;">97%</strong></span></div>
+                            </div>
+
+                            <div style="border:1px solid var(--gray-200);border-radius:10px;padding:16px;background:var(--white);">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                                    <div style="width:34px;height:34px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+                                    <div style="flex:1;"><div style="font-weight:600;font-size:14px;color:var(--gray-900);">Variance</div><div style="font-size:11px;color:var(--gray-500);">Explains plan vs actual</div></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500);"><span>Cards: <strong style="color:var(--gray-900);">14</strong></span><span>Accuracy: <strong style="color:#2d7a4d;">92%</strong></span></div>
+                            </div>
+
+                            <div style="border:1px solid var(--gray-200);border-radius:10px;padding:16px;background:var(--white);">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                                    <div style="width:34px;height:34px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
+                                    <div style="flex:1;"><div style="font-weight:600;font-size:14px;color:var(--gray-900);">Capacity</div><div style="font-size:11px;color:var(--gray-500);">Suggests resource assignments</div></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500);"><span>Open: <strong style="color:var(--gray-900);">6</strong></span><span>Accuracy: <strong style="color:#2d7a4d;">88%</strong></span></div>
+                            </div>
+
+                            <div style="border:1px solid var(--gray-200);border-radius:10px;padding:16px;background:var(--white);">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                                    <div style="width:34px;height:34px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg></div>
+                                    <div style="flex:1;"><div style="font-weight:600;font-size:14px;color:var(--gray-900);">Forecast</div><div style="font-size:11px;color:var(--gray-500);">Computes EAC and risk</div></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500);"><span>Projects: <strong style="color:var(--gray-900);">42</strong></span><span>Accuracy: <strong style="color:#a86c0c;">87%</strong></span></div>
+                            </div>
+
+                            <div style="border:1px solid var(--gray-200);border-radius:10px;padding:16px;background:var(--white);">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                                    <div style="width:34px;height:34px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+                                    <div style="flex:1;"><div style="font-weight:600;font-size:14px;color:var(--gray-900);">Productivity</div><div style="font-size:11px;color:var(--gray-500);">Hours-per-unit metrics</div></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500);"><span>Crews: <strong style="color:var(--gray-900);">28</strong></span><span>Anomalies: <strong style="color:#b03a2e;">3</strong></span></div>
+                            </div>
+
+                            <div style="border:1px solid var(--gray-200);border-radius:10px;padding:16px;background:var(--white);">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                                    <div style="width:34px;height:34px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+                                    <div style="flex:1;"><div style="font-weight:600;font-size:14px;color:var(--gray-900);">Compliance</div><div style="font-size:11px;color:var(--gray-500);">Certifications and incidents</div></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500);"><span>Expiring: <strong style="color:#a86c0c;">7</strong></span><span>Open issues: <strong style="color:var(--gray-900);">2</strong></span></div>
+                            </div>
+
+                            <div style="border:1px solid var(--gray-200);border-radius:10px;padding:16px;background:var(--white);">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                                    <div style="width:34px;height:34px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+                                    <div style="flex:1;"><div style="font-weight:600;font-size:14px;color:var(--gray-900);">Approval</div><div style="font-size:11px;color:var(--gray-500);">Auto-approves within policy</div></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500);"><span>Auto (24h): <strong style="color:var(--gray-900);">183</strong></span><span>Escalated: <strong style="color:#a86c0c;">11</strong></span></div>
+                            </div>
+
+                            <div style="border:1px solid var(--gray-200);border-radius:10px;padding:16px;background:var(--white);">
+                                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                                    <div style="width:34px;height:34px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
+                                    <div style="flex:1;"><div style="font-weight:600;font-size:14px;color:var(--gray-900);">Insights</div><div style="font-size:11px;color:var(--gray-500);">Conversational queries</div></div>
+                                </div>
+                                <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray-500);"><span>Queries (7d): <strong style="color:var(--gray-900);">214</strong></span><span>Avg. latency: <strong>2.1s</strong></span></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="table-card" style="padding:24px;margin-top:20px;">
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+                            <h3 style="margin:0;font-size:16px;font-weight:600;color:var(--gray-900);">Top suggestions awaiting your action</h3>
+                            <a href="#" onclick="showPage('suggestion-queue','Suggestion Queue');return false;" style="font-size:12px;color:var(--cta);text-decoration:none;">See all 12 →</a>
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:10px;">
+                            <div style="display:flex;gap:12px;padding:14px;background:rgba(125,90,210,0.06);border:1px solid rgba(125,90,210,0.18);border-radius:8px;">
+                                <div style="width:6px;border-radius:3px;background:#7d5ad2;flex-shrink:0;"></div>
+                                <div style="flex:1;"><div style="font-size:13px;color:var(--gray-900);font-weight:500;">Allocator suggests timesheet for Tashu Mehra (week of Apr 28)</div><div style="font-size:12px;color:var(--gray-500);margin-top:3px;">40 hrs across Project Voult (32) and Project Harbinger (8) — confidence 94%</div></div>
+                                <button style="padding:6px 12px;background:#2d7a4d;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;">Accept</button>
+                                <button style="padding:6px 12px;background:transparent;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;cursor:pointer;">Edit</button>
+                            </div>
+                            <div style="display:flex;gap:12px;padding:14px;background:rgba(125,90,210,0.06);border:1px solid rgba(125,90,210,0.18);border-radius:8px;">
+                                <div style="width:6px;border-radius:3px;background:#7d5ad2;flex-shrink:0;"></div>
+                                <div style="flex:1;"><div style="font-size:13px;color:var(--gray-900);font-weight:500;">Receipt classified — IndianOil ₹2,840 mileage</div><div style="font-size:12px;color:var(--gray-500);margin-top:3px;">Project Harbinger, GL Travel-Fuel (5230), confidence 97%</div></div>
+                                <button style="padding:6px 12px;background:#2d7a4d;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;">Accept</button>
+                                <button style="padding:6px 12px;background:transparent;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;cursor:pointer;">Edit</button>
+                            </div>
+                            <div style="display:flex;gap:12px;padding:14px;background:rgba(168,108,12,0.06);border:1px solid rgba(168,108,12,0.22);border-radius:8px;">
+                                <div style="width:6px;border-radius:3px;background:#a86c0c;flex-shrink:0;"></div>
+                                <div style="flex:1;"><div style="font-size:13px;color:var(--gray-900);font-weight:500;">Forecast flags Project Aurora — EAC ₹1.42 Cr vs contract ₹1.20 Cr (+18%)</div><div style="font-size:12px;color:var(--gray-500);margin-top:3px;">Driven by 3 weather delays totalling 96 hrs in Phase 2 — Variance agent has full breakdown</div></div>
+                                <button style="padding:6px 12px;background:transparent;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;cursor:pointer;">Review</button>
+                            </div>
+                            <div style="display:flex;gap:12px;padding:14px;background:rgba(168,108,12,0.06);border:1px solid rgba(168,108,12,0.22);border-radius:8px;">
+                                <div style="width:6px;border-radius:3px;background:#a86c0c;flex-shrink:0;"></div>
+                                <div style="flex:1;"><div style="font-weight:500;font-size:13px;color:var(--gray-900);">Compliance — 3 Height-Work certs expire in next 14 days</div><div style="font-size:12px;color:var(--gray-500);margin-top:3px;">Affects Inder Singh, Neeti Sharma, Pawan Verma — Capacity agent will exclude from height-work assignments after expiry</div></div>
+                                <button style="padding:6px 12px;background:transparent;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;cursor:pointer;">Open</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ═══ PAGE: SUGGESTION QUEUE ═══ -->
+                <div id="page-suggestion-queue" class="page-section">
+                    <div class="page-header">
+                        <div class="stats-banner">
+                            <div class="stats-banner-item"><div class="stats-banner-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3"/></svg></div><div class="stats-banner-content"><div class="stats-banner-label">Total open</div><div class="stats-banner-value">12</div></div></div>
+                            <div class="stats-banner-item"><div class="stats-banner-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div><div class="stats-banner-content"><div class="stats-banner-label">High confidence</div><div class="stats-banner-value">7</div></div></div>
+                            <div class="stats-banner-item"><div class="stats-banner-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div><div class="stats-banner-content"><div class="stats-banner-label">Needs review</div><div class="stats-banner-value">5</div></div></div>
+                            <div class="stats-banner-item"><div class="stats-banner-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3"/></svg></div><div class="stats-banner-content"><div class="stats-banner-label">Avg. age</div><div class="stats-banner-value">3.2h</div></div></div>
+                        </div>
+                    </div>
+
+                    <div class="control-bar" style="display:flex;gap:10px;margin-bottom:14px;align-items:center;flex-wrap:wrap;">
+                        <select style="padding:8px 12px;border:1px solid var(--gray-200);border-radius:8px;background:var(--white);color:var(--gray-900);font-size:13px;"><option>All agents</option><option>Allocator</option><option>Receipt</option><option>Variance</option><option>Capacity</option><option>Forecast</option><option>Productivity</option><option>Compliance</option><option>Approval</option></select>
+                        <select style="padding:8px 12px;border:1px solid var(--gray-200);border-radius:8px;background:var(--white);color:var(--gray-900);font-size:13px;"><option>All confidence</option><option>≥ 95%</option><option>85% – 95%</option><option>&lt; 85%</option></select>
+                        <select style="padding:8px 12px;border:1px solid var(--gray-200);border-radius:8px;background:var(--white);color:var(--gray-900);font-size:13px;"><option>All ages</option><option>&lt; 1 hour</option><option>1 – 24 hours</option><option>&gt; 24 hours</option></select>
+                        <button style="padding:8px 14px;background:#2d7a4d;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;margin-left:auto;">Accept all high-confidence (7)</button>
+                    </div>
+
+                    <div class="table-card" style="padding:20px;">
+                        <table style="width:100%;border-collapse:collapse;">
+                            <thead><tr style="border-bottom:2px solid var(--gray-200);text-align:left;font-size:12px;text-transform:uppercase;color:var(--gray-500);letter-spacing:0.5px;">
+                                <th style="padding:10px 8px;">Agent</th><th style="padding:10px 8px;">Suggestion</th><th style="padding:10px 8px;">Target</th><th style="padding:10px 8px;">Confidence</th><th style="padding:10px 8px;">Age</th><th style="padding:10px 8px;text-align:right;">Action</th>
+                            </tr></thead>
+                            <tbody style="font-size:13px;">
+                                <tr style="border-bottom:1px solid var(--gray-200);"><td style="padding:14px 8px;"><span style="display:inline-block;padding:2px 8px;background:rgba(125,90,210,0.12);color:#7d5ad2;border-radius:4px;font-size:11px;font-weight:500;">Allocator</span></td><td style="padding:14px 8px;color:var(--gray-900);">Pre-fill timesheet — Tashu Mehra (week of Apr 28)</td><td style="padding:14px 8px;color:var(--gray-500);">Voult, Harbinger</td><td style="padding:14px 8px;color:#2d7a4d;font-weight:500;">94%</td><td style="padding:14px 8px;color:var(--gray-500);">22m</td><td style="padding:14px 8px;text-align:right;"><button style="padding:5px 10px;background:#2d7a4d;color:#fff;border:none;border-radius:6px;font-size:11px;cursor:pointer;">Accept</button></td></tr>
+                                <tr style="border-bottom:1px solid var(--gray-200);"><td style="padding:14px 8px;"><span style="display:inline-block;padding:2px 8px;background:rgba(125,90,210,0.12);color:#7d5ad2;border-radius:4px;font-size:11px;font-weight:500;">Receipt</span></td><td style="padding:14px 8px;color:var(--gray-900);">Classify IndianOil receipt — ₹2,840 mileage</td><td style="padding:14px 8px;color:var(--gray-500);">Harbinger</td><td style="padding:14px 8px;color:#2d7a4d;font-weight:500;">97%</td><td style="padding:14px 8px;color:var(--gray-500);">1h</td><td style="padding:14px 8px;text-align:right;"><button style="padding:5px 10px;background:#2d7a4d;color:#fff;border:none;border-radius:6px;font-size:11px;cursor:pointer;">Accept</button></td></tr>
+                                <tr style="border-bottom:1px solid var(--gray-200);"><td style="padding:14px 8px;"><span style="display:inline-block;padding:2px 8px;background:rgba(125,90,210,0.12);color:#7d5ad2;border-radius:4px;font-size:11px;font-weight:500;">Forecast</span></td><td style="padding:14px 8px;color:var(--gray-900);">EAC update — Project Aurora, +18% over contract</td><td style="padding:14px 8px;color:var(--gray-500);">Aurora</td><td style="padding:14px 8px;color:#a86c0c;font-weight:500;">87%</td><td style="padding:14px 8px;color:var(--gray-500);">2h</td><td style="padding:14px 8px;text-align:right;"><button style="padding:5px 10px;background:transparent;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:6px;font-size:11px;cursor:pointer;">Review</button></td></tr>
+                                <tr style="border-bottom:1px solid var(--gray-200);"><td style="padding:14px 8px;"><span style="display:inline-block;padding:2px 8px;background:rgba(125,90,210,0.12);color:#7d5ad2;border-radius:4px;font-size:11px;font-weight:500;">Capacity</span></td><td style="padding:14px 8px;color:var(--gray-900);">Suggest 3 candidates for unstaffed Sr. Engineer plan rows (W26)</td><td style="padding:14px 8px;color:var(--gray-500);">Voult Phase 3</td><td style="padding:14px 8px;color:#2d7a4d;font-weight:500;">91%</td><td style="padding:14px 8px;color:var(--gray-500);">3h</td><td style="padding:14px 8px;text-align:right;"><button style="padding:5px 10px;background:#2d7a4d;color:#fff;border:none;border-radius:6px;font-size:11px;cursor:pointer;">Accept</button></td></tr>
+                                <tr style="border-bottom:1px solid var(--gray-200);"><td style="padding:14px 8px;"><span style="display:inline-block;padding:2px 8px;background:rgba(125,90,210,0.12);color:#7d5ad2;border-radius:4px;font-size:11px;font-weight:500;">Compliance</span></td><td style="padding:14px 8px;color:var(--gray-900);">Height-Work cert expiring — Inder Singh (May 14)</td><td style="padding:14px 8px;color:var(--gray-500);">EMP-1041</td><td style="padding:14px 8px;color:var(--gray-900);font-weight:500;">—</td><td style="padding:14px 8px;color:var(--gray-500);">5h</td><td style="padding:14px 8px;text-align:right;"><button style="padding:5px 10px;background:transparent;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:6px;font-size:11px;cursor:pointer;">Open</button></td></tr>
+                                <tr style="border-bottom:1px solid var(--gray-200);"><td style="padding:14px 8px;"><span style="display:inline-block;padding:2px 8px;background:rgba(125,90,210,0.12);color:#7d5ad2;border-radius:4px;font-size:11px;font-weight:500;">Approval</span></td><td style="padding:14px 8px;color:var(--gray-900);">Escalate — expense ₹15,200 over per-diem (Pawan Verma)</td><td style="padding:14px 8px;color:var(--gray-500);">EXP-2841</td><td style="padding:14px 8px;color:var(--gray-900);font-weight:500;">—</td><td style="padding:14px 8px;color:var(--gray-500);">6h</td><td style="padding:14px 8px;text-align:right;"><button style="padding:5px 10px;background:transparent;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:6px;font-size:11px;cursor:pointer;">Decide</button></td></tr>
+                                <tr style="border-bottom:1px solid var(--gray-200);"><td style="padding:14px 8px;"><span style="display:inline-block;padding:2px 8px;background:rgba(125,90,210,0.12);color:#7d5ad2;border-radius:4px;font-size:11px;font-weight:500;">Productivity</span></td><td style="padding:14px 8px;color:var(--gray-900);">Anomaly — Crew CRW-North-04 productivity dropped 32% week-over-week</td><td style="padding:14px 8px;color:var(--gray-500);">Crew CRW-N04</td><td style="padding:14px 8px;color:var(--gray-900);font-weight:500;">—</td><td style="padding:14px 8px;color:var(--gray-500);">8h</td><td style="padding:14px 8px;text-align:right;"><button style="padding:5px 10px;background:transparent;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:6px;font-size:11px;cursor:pointer;">Investigate</button></td></tr>
+                                <tr><td style="padding:14px 8px;"><span style="display:inline-block;padding:2px 8px;background:rgba(125,90,210,0.12);color:#7d5ad2;border-radius:4px;font-size:11px;font-weight:500;">Variance</span></td><td style="padding:14px 8px;color:var(--gray-900);">Variance card ready — Project Harbinger Phase 2 (-8%)</td><td style="padding:14px 8px;color:var(--gray-500);">Harbinger</td><td style="padding:14px 8px;color:var(--gray-900);font-weight:500;">—</td><td style="padding:14px 8px;color:var(--gray-500);">14h</td><td style="padding:14px 8px;text-align:right;"><button style="padding:5px 10px;background:transparent;color:var(--gray-500);border:1px solid var(--gray-200);border-radius:6px;font-size:11px;cursor:pointer;">Read</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ═══ PAGE: ASK ONAQT (functional) ═══ -->
+                <div id="page-ask-onaqt" class="page-section">
+                    <div class="askonaqt-scroll">
+
+                    <!-- Hero / input -->
+                    <div class="table-card" id="askonaqt-hero" style="padding:32px;text-align:center;background:linear-gradient(135deg,rgba(125,90,210,0.06),rgba(45,74,53,0.05));border:1px solid var(--gray-200);">
+                        <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:10px;padding:4px 12px;background:rgba(125,90,210,0.12);color:#7d5ad2;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:0.4px;text-transform:uppercase;">
+                            <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            Insights Agent · v1.4
+                        </div>
+                        <div style="font-size:32px;font-weight:600;color:var(--gray-900);margin-bottom:8px;font-family:'Fraunces',serif;">Ask Onaqt</div>
+                        <div style="font-size:14px;color:var(--gray-500);margin-bottom:24px;">Answers grounded in your operational ledgers — natural language in, real numbers out.</div>
+                        <div style="max-width:680px;margin:0 auto;display:flex;align-items:center;gap:8px;background:var(--white);border:2px solid var(--cta);border-radius:12px;padding:12px 16px;box-shadow:0 4px 16px rgba(200,131,122,0.18);">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:var(--cta);flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            <input type="text" id="askonaqt-input" placeholder="e.g., show me overrun projects this month" autocomplete="off" style="flex:1;border:none;outline:none;background:transparent;font-size:15px;color:var(--gray-900);" />
+                            <button id="askonaqt-submit" style="padding:8px 18px;background:var(--cta);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0;">Ask</button>
+                        </div>
+                        <div style="margin-top:14px;font-size:11px;color:var(--gray-500);">
+                            <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:inline;vertical-align:-1px;margin-right:3px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                            Read-only access · Answers cite source ledgers · Avg. latency 2.1s
+                        </div>
+                    </div>
+
+                    <!-- Suggestion chips -->
+                    <div class="table-card" id="askonaqt-suggestions" style="padding:20px;margin-top:16px;">
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+                            <h3 style="margin:0;font-size:13px;font-weight:600;color:var(--gray-900);text-transform:uppercase;letter-spacing:0.5px;">Try these</h3>
+                            <span style="font-size:11px;color:var(--gray-500);">Click any to run instantly</span>
+                        </div>
+                        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;">
+                            <button class="askonaqt-chip" data-q="overrun-projects" style="padding:12px 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;text-align:left;cursor:pointer;font-size:13px;color:var(--gray-900);transition:all 0.15s;">Which projects are over budget right now?</button>
+                            <button class="askonaqt-chip" data-q="top-utilized" style="padding:12px 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;text-align:left;cursor:pointer;font-size:13px;color:var(--gray-900);transition:all 0.15s;">Top 5 most utilized engineers this month</button>
+                            <button class="askonaqt-chip" data-q="delay-reason" style="padding:12px 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;text-align:left;cursor:pointer;font-size:13px;color:var(--gray-900);transition:all 0.15s;">Biggest delay reason last quarter</button>
+                            <button class="askonaqt-chip" data-q="invoiceable" style="padding:12px 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;text-align:left;cursor:pointer;font-size:13px;color:var(--gray-900);transition:all 0.15s;">What can we invoice this month, by customer?</button>
+                            <button class="askonaqt-chip" data-q="declining-crews" style="padding:12px 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;text-align:left;cursor:pointer;font-size:13px;color:var(--gray-900);transition:all 0.15s;">Crews with declining productivity</button>
+                            <button class="askonaqt-chip" data-q="cert-expiring" style="padding:12px 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;text-align:left;cursor:pointer;font-size:13px;color:var(--gray-900);transition:all 0.15s;">Certifications expiring in next 30 days</button>
+                        </div>
+                    </div>
+
+                    <!-- Conversation thread (empty initially) -->
+                    <div id="askonaqt-thread" style="margin-top:16px;display:none;flex-direction:column;gap:14px;"></div>
+
+                    <!-- Footer actions when thread has content -->
+                    <div id="askonaqt-footer" style="display:none;margin-top:14px;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;">
+                        <div style="font-size:12px;color:var(--gray-500);">
+                            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:inline;vertical-align:-2px;margin-right:4px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            Conversation history is saved to Agent Activity Feed
+                        </div>
+                        <button id="askonaqt-reset" style="padding:6px 14px;background:transparent;color:var(--gray-700);border:1px solid var(--gray-300);border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;">New conversation</button>
+                    </div>
+                    </div><!-- /askonaqt-scroll -->
+                </div>
+
+                <script>
+                (function() {
+                    // ── Pre-built answers keyed to query intent ──
+                    const ANSWERS = {
+                        'overrun-projects': {
+                            label: 'Which projects are over budget right now?',
+                            latency: 1.8,
+                            confidence: 96,
+                            sources: ['Project Plans', 'Plan vs Actual', 'Forecast Agent'],
+                            render: () => `
+                                <div style="margin-bottom:14px;font-size:14px;color:var(--gray-900);line-height:1.6;">
+                                    <strong>3 projects</strong> are currently tracking over their contracted budget, with a combined overrun of <strong>₹47.2 L</strong>. Project Aurora is the most exposed at <strong>+18%</strong> driven by weather delays in Phase 2.
+                                </div>
+                                <div style="overflow-x:auto;border:1px solid var(--gray-200);border-radius:8px;">
+                                    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+                                        <thead><tr style="background:var(--gray-50);text-align:left;font-size:11px;text-transform:uppercase;color:var(--gray-500);letter-spacing:0.5px;">
+                                            <th style="padding:10px 12px;">Project</th>
+                                            <th style="padding:10px 12px;">Contract</th>
+                                            <th style="padding:10px 12px;">EAC</th>
+                                            <th style="padding:10px 12px;">Variance</th>
+                                            <th style="padding:10px 12px;">Driver</th>
+                                        </tr></thead>
+                                        <tbody>
+                                            <tr style="border-top:1px solid var(--gray-200);">
+                                                <td style="padding:12px;color:var(--gray-900);font-weight:500;">Project Aurora</td>
+                                                <td style="padding:12px;color:var(--gray-700);">₹1.20 Cr</td>
+                                                <td style="padding:12px;color:var(--gray-700);">₹1.42 Cr</td>
+                                                <td style="padding:12px;color:#b03a2e;font-weight:600;">+18.3%</td>
+                                                <td style="padding:12px;color:var(--gray-500);font-size:12px;">3 weather delays · 96 hrs</td>
+                                            </tr>
+                                            <tr style="border-top:1px solid var(--gray-200);">
+                                                <td style="padding:12px;color:var(--gray-900);font-weight:500;">Project Voult</td>
+                                                <td style="padding:12px;color:var(--gray-700);">₹2.85 Cr</td>
+                                                <td style="padding:12px;color:var(--gray-700);">₹3.06 Cr</td>
+                                                <td style="padding:12px;color:#b03a2e;font-weight:600;">+7.4%</td>
+                                                <td style="padding:12px;color:var(--gray-500);font-size:12px;">Scope creep · Phase 3</td>
+                                            </tr>
+                                            <tr style="border-top:1px solid var(--gray-200);">
+                                                <td style="padding:12px;color:var(--gray-900);font-weight:500;">Project Harbinger</td>
+                                                <td style="padding:12px;color:var(--gray-700);">₹1.60 Cr</td>
+                                                <td style="padding:12px;color:var(--gray-700);">₹1.64 Cr</td>
+                                                <td style="padding:12px;color:#a86c0c;font-weight:600;">+2.5%</td>
+                                                <td style="padding:12px;color:var(--gray-500);font-size:12px;">Material cost increase</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>`
+                        },
+                        'top-utilized': {
+                            label: 'Top 5 most utilized engineers this month',
+                            latency: 1.4,
+                            confidence: 98,
+                            sources: ['Timesheets', 'Resource Plan'],
+                            render: () => `
+                                <div style="margin-bottom:14px;font-size:14px;color:var(--gray-900);line-height:1.6;">
+                                    These 5 engineers have logged the highest billable utilization in May 2026. <strong>Tashu Mehra</strong> and <strong>Inder Singh</strong> are both above the 90% watch threshold — Capacity agent flagged them for burnout review.
+                                </div>
+                                <div style="display:flex;flex-direction:column;gap:8px;">
+                                    ${[
+                                        {n:'Tashu Mehra', r:'Sr. Site Engineer', u:96, h:154, p:'Voult, Harbinger', warn:true},
+                                        {n:'Inder Singh', r:'Crew Lead', u:92, h:148, p:'Aurora', warn:true},
+                                        {n:'Neeti Sharma', r:'QA Engineer', u:88, h:142, p:'Voult', warn:false},
+                                        {n:'Pawan Verma', r:'Sr. Engineer', u:84, h:135, p:'Harbinger, Phoenix', warn:false},
+                                        {n:'Rohit Kapoor', r:'Site Engineer', u:81, h:130, p:'Aurora, Voult', warn:false},
+                                    ].map(p => `
+                                        <div style="display:flex;align-items:center;gap:14px;padding:12px 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;">
+                                            <div style="width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;">${p.n.split(' ').map(x=>x[0]).join('')}</div>
+                                            <div style="flex:1;min-width:0;">
+                                                <div style="font-weight:600;font-size:13px;color:var(--gray-900);">${p.n} ${p.warn?'<span style="margin-left:6px;padding:1px 7px;background:rgba(168,108,12,0.15);color:#a86c0c;border-radius:4px;font-size:10px;font-weight:600;">BURNOUT WATCH</span>':''}</div>
+                                                <div style="font-size:11px;color:var(--gray-500);">${p.r} · ${p.p}</div>
+                                            </div>
+                                            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;min-width:120px;">
+                                                <div style="font-size:11px;color:var(--gray-500);">${p.h} hrs · ${p.u}%</div>
+                                                <div style="width:120px;height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden;">
+                                                    <div style="width:${p.u}%;height:100%;background:${p.warn?'#a86c0c':'var(--primary)'};border-radius:3px;"></div>
+                                                </div>
+                                            </div>
+                                        </div>`).join('')}
+                                </div>`
+                        },
+                        'delay-reason': {
+                            label: 'Biggest delay reason last quarter',
+                            latency: 2.3,
+                            confidence: 91,
+                            sources: ['Delay & Disruption Tracker', 'Daily Logs'],
+                            render: () => `
+                                <div style="margin-bottom:14px;font-size:14px;color:var(--gray-900);line-height:1.6;">
+                                    Across Q1 2026, <strong>weather delays</strong> accounted for the largest share of disruption hours at <strong>42%</strong> (412 hrs total), followed by material delivery delays. Aurora and Voult together absorbed 71% of weather-related downtime.
+                                </div>
+                                <div style="position:relative;height:260px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;padding:14px;">
+                                    <canvas id="askonaqt-chart-delay"></canvas>
+                                </div>`,
+                            chart: (id) => new Chart(document.getElementById(id), {
+                                type: 'bar',
+                                data: {
+                                    labels: ['Weather', 'Material delivery', 'Permit issues', 'Crew availability', 'Equipment breakdown', 'Client hold'],
+                                    datasets: [{
+                                        label: 'Disruption hours',
+                                        data: [412, 218, 156, 112, 78, 64],
+                                        backgroundColor: ['#b03a2e','#a86c0c','#1E4A72','#7d5ad2','#2D4A35','#9ca3af'],
+                                        borderRadius: 6, borderSkipped: false,
+                                    }]
+                                },
+                                options: {
+                                    responsive:true, maintainAspectRatio:false, indexAxis:'y',
+                                    plugins:{legend:{display:false}, tooltip:{callbacks:{label:(c)=>c.parsed.x+' hrs'}}},
+                                    scales:{
+                                        x:{ticks:{font:{size:11}},grid:{color:'rgba(0,0,0,0.05)'}},
+                                        y:{ticks:{font:{size:12}},grid:{display:false}}
+                                    }
+                                }
+                            })
+                        },
+                        'invoiceable': {
+                            label: 'What can we invoice this month, by customer?',
+                            latency: 1.6,
+                            confidence: 97,
+                            sources: ['Sign-off & Certification', 'Invoice Tracker'],
+                            render: () => `
+                                <div style="margin-bottom:14px;font-size:14px;color:var(--gray-900);line-height:1.6;">
+                                    <strong>₹62.4 L</strong> is invoice-ready this month across 4 customers — all backed by signed WCCs. <strong>Reliance Infra</strong> alone accounts for 38% of that. 2 items are awaiting customer sign-off and not yet billable.
+                                </div>
+                                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;">
+                                    ${[
+                                        {c:'Reliance Infra', a:'₹23.8 L', items:8, sub:'Aurora Phase 2, Voult Phase 3'},
+                                        {c:'L&T Construction', a:'₹17.2 L', items:5, sub:'Harbinger milestones'},
+                                        {c:'Adani Energy', a:'₹14.6 L', items:6, sub:'Phoenix substation'},
+                                        {c:'Tata Projects', a:'₹6.8 L', items:3, sub:'Voult Phase 2 closeout'},
+                                    ].map(c => `
+                                        <div style="padding:14px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;">
+                                            <div style="font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.5px;">${c.c}</div>
+                                            <div style="font-size:22px;font-weight:600;color:var(--gray-900);margin:6px 0;font-family:'Fraunces',serif;">${c.a}</div>
+                                            <div style="font-size:11px;color:var(--gray-500);">${c.items} items · ${c.sub}</div>
+                                        </div>`).join('')}
+                                </div>
+                                <div style="margin-top:12px;padding:10px 12px;background:rgba(168,108,12,0.08);border:1px solid rgba(168,108,12,0.25);border-radius:8px;font-size:12px;color:var(--gray-700);">
+                                    <strong style="color:#a86c0c;">2 items awaiting sign-off:</strong> Aurora P3 milestone (₹4.2 L) · Voult P3 partial (₹2.1 L). Not included above.
+                                </div>`
+                        },
+                        'declining-crews': {
+                            label: 'Crews with declining productivity',
+                            latency: 1.9,
+                            confidence: 89,
+                            sources: ['Crew Productivity', 'Productivity Agent'],
+                            render: () => `
+                                <div style="margin-bottom:14px;font-size:14px;color:var(--gray-900);line-height:1.6;">
+                                    <strong>3 crews</strong> show declining hrs/unit over the past 4 weeks. CRW-North-04 is the most concerning, down <strong>32% WoW</strong>. Productivity agent flagged this last Tuesday — no resolution yet.
+                                </div>
+                                <div style="display:flex;flex-direction:column;gap:10px;">
+                                    ${[
+                                        {c:'CRW-North-04', l:'Inder Singh', d:'-32%', n:'15 → 22 hrs/unit', p:'Aurora', sev:'#b03a2e'},
+                                        {c:'CRW-South-02', l:'Vikram Joshi', d:'-18%', n:'12 → 14 hrs/unit', p:'Harbinger', sev:'#a86c0c'},
+                                        {c:'CRW-East-01', l:'Aditya Roy', d:'-9%', n:'10 → 11 hrs/unit', p:'Phoenix', sev:'#a86c0c'},
+                                    ].map(c => `
+                                        <div style="display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--gray-200);border-radius:8px;background:var(--white);">
+                                            <div style="width:4px;height:42px;border-radius:2px;background:${c.sev};"></div>
+                                            <div style="flex:1;">
+                                                <div style="font-weight:600;font-size:14px;color:var(--gray-900);">${c.c}</div>
+                                                <div style="font-size:12px;color:var(--gray-500);">Lead: ${c.l} · ${c.p}</div>
+                                            </div>
+                                            <div style="text-align:right;">
+                                                <div style="font-size:18px;font-weight:600;color:${c.sev};font-family:'Fraunces',serif;">${c.d}</div>
+                                                <div style="font-size:11px;color:var(--gray-500);">${c.n}</div>
+                                            </div>
+                                        </div>`).join('')}
+                                </div>`
+                        },
+                        'cert-expiring': {
+                            label: 'Certifications expiring in next 30 days',
+                            latency: 1.2,
+                            confidence: 99,
+                            sources: ['Certifications', 'Employees'],
+                            render: () => `
+                                <div style="margin-bottom:14px;font-size:14px;color:var(--gray-900);line-height:1.6;">
+                                    <strong>7 certifications</strong> are expiring within 30 days, affecting 5 employees. <strong>3 are Height-Work certs</strong> — Capacity agent will automatically exclude those workers from height-work assignments after expiry unless renewed.
+                                </div>
+                                <div style="overflow-x:auto;border:1px solid var(--gray-200);border-radius:8px;">
+                                    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+                                        <thead><tr style="background:var(--gray-50);text-align:left;font-size:11px;text-transform:uppercase;color:var(--gray-500);letter-spacing:0.5px;">
+                                            <th style="padding:10px 12px;">Employee</th>
+                                            <th style="padding:10px 12px;">Certification</th>
+                                            <th style="padding:10px 12px;">Expires</th>
+                                            <th style="padding:10px 12px;">Days left</th>
+                                        </tr></thead>
+                                        <tbody>
+                                            ${[
+                                                ['Inder Singh','Height-Work','May 14, 2026',2,'#b03a2e'],
+                                                ['Neeti Sharma','Height-Work','May 18, 2026',6,'#b03a2e'],
+                                                ['Pawan Verma','Height-Work','May 22, 2026',10,'#a86c0c'],
+                                                ['Rohit Kapoor','Confined Space','May 26, 2026',14,'#a86c0c'],
+                                                ['Tashu Mehra','First Aid','Jun 1, 2026',20,'#2d7a4d'],
+                                                ['Aditya Roy','Electrical Safety','Jun 5, 2026',24,'#2d7a4d'],
+                                                ['Vikram Joshi','Fire Watch','Jun 8, 2026',27,'#2d7a4d'],
+                                            ].map(r => `
+                                                <tr style="border-top:1px solid var(--gray-200);">
+                                                    <td style="padding:12px;color:var(--gray-900);font-weight:500;">${r[0]}</td>
+                                                    <td style="padding:12px;color:var(--gray-700);">${r[1]}</td>
+                                                    <td style="padding:12px;color:var(--gray-700);">${r[2]}</td>
+                                                    <td style="padding:12px;color:${r[4]};font-weight:600;">${r[3]} days</td>
+                                                </tr>`).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>`
+                        }
+                    };
+
+                    const FALLBACK = {
+                        label: '',
+                        latency: 1.7,
+                        confidence: 0,
+                        sources: [],
+                        render: (q) => `
+                            <div style="padding:16px;background:rgba(125,90,210,0.06);border:1px solid rgba(125,90,210,0.18);border-radius:8px;font-size:13px;color:var(--gray-700);line-height:1.6;">
+                                <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#7d5ad2;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    <strong style="color:var(--gray-900);">Demo mode</strong>
+                                </div>
+                                This is a demo build with pre-computed answers for the 6 sample questions. In production, the Insights agent would parse <em>"${q}"</em>, generate a query plan against your operational ledgers, and return a grounded answer with sources.
+                                <br><br>Try one of the suggested questions to see how it works.
+                            </div>`
+                    };
+
+                    // ── DOM refs ──
+                    const input    = document.getElementById('askonaqt-input');
+                    const submit   = document.getElementById('askonaqt-submit');
+                    const thread   = document.getElementById('askonaqt-thread');
+                    const footer   = document.getElementById('askonaqt-footer');
+                    const reset    = document.getElementById('askonaqt-reset');
+                    const chips    = document.querySelectorAll('.askonaqt-chip');
+
+                    // ── Render helpers ──
+                    function escapeHtml(s){return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+                    function appendUserMsg(text) {
+                        const el = document.createElement('div');
+                        el.style.cssText = 'display:flex;justify-content:flex-end;';
+                        el.innerHTML = `
+                            <div style="max-width:75%;padding:12px 16px;background:var(--primary);color:#fff;border-radius:14px 14px 4px 14px;font-size:14px;line-height:1.5;box-shadow:0 2px 8px rgba(45,74,53,0.18);">
+                                ${escapeHtml(text)}
+                            </div>`;
+                        thread.appendChild(el);
+                        return el;
+                    }
+
+                    function appendThinking() {
+                        const el = document.createElement('div');
+                        el.className = 'askonaqt-thinking';
+                        el.style.cssText = 'display:flex;justify-content:flex-start;align-items:flex-start;gap:10px;';
+                        el.innerHTML = `
+                            <div style="width:32px;height:32px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;flex-shrink:0;">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            </div>
+                            <div style="padding:14px 18px;background:var(--white);border:1px solid var(--gray-200);border-radius:4px 14px 14px 14px;font-size:13px;color:var(--gray-500);display:flex;align-items:center;gap:8px;">
+                                <span class="askonaqt-dot" style="width:6px;height:6px;border-radius:50%;background:#7d5ad2;animation:askonaqtPulse 1.2s ease-in-out infinite;"></span>
+                                <span class="askonaqt-dot" style="width:6px;height:6px;border-radius:50%;background:#7d5ad2;animation:askonaqtPulse 1.2s ease-in-out 0.2s infinite;"></span>
+                                <span class="askonaqt-dot" style="width:6px;height:6px;border-radius:50%;background:#7d5ad2;animation:askonaqtPulse 1.2s ease-in-out 0.4s infinite;"></span>
+                                <span style="margin-left:6px;">Querying ledgers…</span>
+                            </div>`;
+                        thread.appendChild(el);
+                        return el;
+                    }
+
+                    function appendAnswer(answer, originalQ) {
+                        const el = document.createElement('div');
+                        el.style.cssText = 'display:flex;justify-content:flex-start;align-items:flex-start;gap:10px;';
+                        const isFallback = !answer.sources || answer.sources.length === 0;
+                        const sourcesHtml = isFallback ? '' : `
+                            <div style="margin-top:14px;padding-top:12px;border-top:1px dashed var(--gray-200);display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--gray-500);">
+                                <span style="text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">Sources:</span>
+                                ${answer.sources.map(s => `<span style="padding:3px 9px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:999px;color:var(--gray-700);font-weight:500;">${s}</span>`).join('')}
+                                <span style="margin-left:auto;">Latency ${answer.latency}s · Confidence ${answer.confidence}%</span>
+                            </div>`;
+                        el.innerHTML = `
+                            <div style="width:32px;height:32px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;flex-shrink:0;">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            </div>
+                            <div style="flex:1;padding:18px;background:var(--white);border:1px solid var(--gray-200);border-radius:4px 14px 14px 14px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+                                ${answer.render(originalQ)}
+                                ${sourcesHtml}
+                            </div>`;
+                        thread.appendChild(el);
+                        return el;
+                    }
+
+                    // ── Main flow: ask a question ──
+                    function ask(query, intentKey) {
+                        const text = query.trim();
+                        if (!text) return;
+
+                        thread.style.display = 'flex';
+                        footer.style.display = 'flex';
+
+                        appendUserMsg(text);
+                        const thinkingEl = appendThinking();
+
+                        // Determine answer
+                        const answer = intentKey && ANSWERS[intentKey] ? ANSWERS[intentKey] : FALLBACK;
+
+                        setTimeout(() => {
+                            thinkingEl.remove();
+                            appendAnswer(answer, text);
+                            // Bind chart if any
+                            if (answer.chart) {
+                                try { answer.chart('askonaqt-chart-delay'); } catch(e){}
+                            }
+                            // Scroll the thread end into view inside the page scroll container
+                            thread.lastElementChild.scrollIntoView({behavior:'smooth', block:'end'});
+                        }, 900);
+
+                        input.value = '';
+                    }
+
+                    // ── Event bindings ──
+                    submit.addEventListener('click', () => ask(input.value, null));
+                    input.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter') { e.preventDefault(); ask(input.value, null); }
+                    });
+                    chips.forEach(chip => {
+                        chip.addEventListener('click', () => {
+                            const key = chip.getAttribute('data-q');
+                            ask(chip.textContent.trim(), key);
+                        });
+                        chip.addEventListener('mouseenter', () => {
+                            chip.style.background = 'var(--white)';
+                            chip.style.borderColor = 'var(--cta)';
+                        });
+                        chip.addEventListener('mouseleave', () => {
+                            chip.style.background = 'var(--gray-50)';
+                            chip.style.borderColor = 'var(--gray-200)';
+                        });
+                    });
+                    reset.addEventListener('click', () => {
+                        thread.innerHTML = '';
+                        thread.style.display = 'none';
+                        footer.style.display = 'none';
+                        input.focus();
+                    });
+                })();
+                </script>
+
+                <style>
+                    /* Scoped scroll wrapper — page-section is display:flex/overflow:hidden,
+                       so we need a flex:1 child that scrolls on its own (mirrors .dash-scroll). */
+                    #page-ask-onaqt .askonaqt-scroll {
+                        flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden;
+                        padding: 4px 4px 24px 4px;
+                        display: flex; flex-direction: column;
+                    }
+                    #page-ask-onaqt .askonaqt-scroll::-webkit-scrollbar { width: 8px; }
+                    #page-ask-onaqt .askonaqt-scroll::-webkit-scrollbar-track { background: transparent; }
+                    #page-ask-onaqt .askonaqt-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
+                    [data-dark="true"] #page-ask-onaqt .askonaqt-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); }
+
+                    /* Cards are flex children of the scroll wrapper — prevent compression. */
+                    #page-ask-onaqt .askonaqt-scroll > .table-card,
+                    #page-ask-onaqt .askonaqt-scroll > #askonaqt-thread,
+                    #page-ask-onaqt .askonaqt-scroll > #askonaqt-footer {
+                        flex-shrink: 0;
+                    }
+
+                    @keyframes askonaqtPulse {
+                        0%, 100% { opacity: 0.3; transform: scale(0.85); }
+                        50%      { opacity: 1;   transform: scale(1); }
+                    }
+                    #page-ask-onaqt .askonaqt-chip:focus { outline: 2px solid var(--cta); outline-offset: 2px; }
+                </style>
+
+
+                <!-- ═══ PAGE: AGENT ACTIVITY FEED ═══ -->
+                <div id="page-agent-activity" class="page-section">
+                    <div class="agentact-scroll">
+
+                        <!-- Stats banner -->
+                        <div class="stats-banner" style="margin-bottom:14px;flex-shrink:0;">
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon" style="background:rgba(125,90,210,0.12);color:#7d5ad2;">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Events Today</div>
+                                    <div style="font-size:22px;font-weight:600;color:var(--gray-900);font-family:'Fraunces',serif;">147</div>
+                                </div>
+                            </div>
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon" style="background:rgba(45,122,77,0.12);color:#2d7a4d;">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Accepted</div>
+                                    <div style="font-size:22px;font-weight:600;color:var(--gray-900);font-family:'Fraunces',serif;">98 <span style="font-size:12px;color:#2d7a4d;font-weight:500;">67%</span></div>
+                                </div>
+                            </div>
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon" style="background:rgba(176,58,46,0.12);color:#b03a2e;">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Rejected / Reverted</div>
+                                    <div style="font-size:22px;font-weight:600;color:var(--gray-900);font-family:'Fraunces',serif;">14</div>
+                                </div>
+                            </div>
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon" style="background:rgba(168,108,12,0.12);color:#a86c0c;">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Pending Review</div>
+                                    <div style="font-size:22px;font-weight:600;color:var(--gray-900);font-family:'Fraunces',serif;">35</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filter bar -->
+                        <div class="table-card" id="agentact-filters" style="padding:14px 16px;margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex-shrink:0;">
+                            <div style="display:flex;align-items:center;gap:8px;">
+                                <span style="font-size:12px;color:var(--gray-500);font-weight:500;">Agent:</span>
+                                <select id="agentact-agent-filter" style="padding:7px 10px;border:1px solid var(--gray-200);border-radius:6px;background:var(--white);color:var(--gray-900);font-size:13px;min-width:140px;">
+                                    <option value="all">All agents</option>
+                                    <option value="Allocator">Allocator</option>
+                                    <option value="Receipt">Receipt</option>
+                                    <option value="Variance">Variance</option>
+                                    <option value="Capacity">Capacity</option>
+                                    <option value="Forecast">Forecast</option>
+                                    <option value="Productivity">Productivity</option>
+                                    <option value="Compliance">Compliance</option>
+                                    <option value="Approval">Approval</option>
+                                    <option value="Insights">Insights</option>
+                                </select>
+                            </div>
+                            <div style="width:1px;height:22px;background:var(--gray-200);"></div>
+                            <span style="font-size:12px;color:var(--gray-500);font-weight:500;">Action:</span>
+                            <div id="agentact-action-chips" style="display:flex;gap:6px;flex-wrap:wrap;">
+                                <button class="agentact-chip active" data-action="all"        style="padding:5px 11px;background:var(--primary);color:#fff;border:1px solid var(--primary);border-radius:999px;font-size:12px;font-weight:500;cursor:pointer;">All</button>
+                                <button class="agentact-chip"        data-action="suggested"  style="padding:5px 11px;background:var(--white);color:var(--gray-700);border:1px solid var(--gray-200);border-radius:999px;font-size:12px;font-weight:500;cursor:pointer;">Suggested</button>
+                                <button class="agentact-chip"        data-action="auto"       style="padding:5px 11px;background:var(--white);color:var(--gray-700);border:1px solid var(--gray-200);border-radius:999px;font-size:12px;font-weight:500;cursor:pointer;">Auto-actioned</button>
+                                <button class="agentact-chip"        data-action="accepted"   style="padding:5px 11px;background:var(--white);color:var(--gray-700);border:1px solid var(--gray-200);border-radius:999px;font-size:12px;font-weight:500;cursor:pointer;">Accepted</button>
+                                <button class="agentact-chip"        data-action="rejected"   style="padding:5px 11px;background:var(--white);color:var(--gray-700);border:1px solid var(--gray-200);border-radius:999px;font-size:12px;font-weight:500;cursor:pointer;">Rejected</button>
+                                <button class="agentact-chip"        data-action="reverted"   style="padding:5px 11px;background:var(--white);color:var(--gray-700);border:1px solid var(--gray-200);border-radius:999px;font-size:12px;font-weight:500;cursor:pointer;">Reverted</button>
+                            </div>
+                            <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
+                                <span style="font-size:12px;color:var(--gray-500);font-weight:500;">Range:</span>
+                                <select id="agentact-range" style="padding:7px 10px;border:1px solid var(--gray-200);border-radius:6px;background:var(--white);color:var(--gray-900);font-size:13px;">
+                                    <option>Last 24h</option>
+                                    <option>Last 7d</option>
+                                    <option>Last 30d</option>
+                                </select>
+                                <button id="agentact-export" style="padding:7px 12px;background:var(--white);color:var(--gray-700);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:5px;">
+                                    <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+                                    Export
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Timeline container -->
+                        <div id="agentact-timeline" style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;"></div>
+
+                        <!-- Empty state (hidden by default) -->
+                        <div id="agentact-empty" style="display:none;padding:60px 20px;text-align:center;color:var(--gray-500);">
+                            <svg width="42" height="42" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin:0 auto 12px;opacity:0.4;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <div style="font-size:14px;font-weight:500;color:var(--gray-700);">No events match these filters</div>
+                            <div style="font-size:12px;margin-top:4px;">Try widening the time range or clearing filters</div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                (function() {
+                    // ── Mock event ledger (last 24h, newest first) ──
+                    const EVENTS = [
+                        { t:'10:42', d:'2026-05-12', agent:'Forecast',    action:'suggested',  conf:87, target:'Project Aurora',
+                          summary:'EAC update — ₹1.42 Cr (+18% vs contract)',
+                          basis:'3 weather delays totalling 96 hrs in Phase 2 (ledger: Daily Logs). Material cost +4% vs plan.',
+                          outcome:'Awaiting review · suggestion #SQ-1042' },
+                        { t:'10:31', d:'2026-05-12', agent:'Receipt',     action:'auto',       conf:99, target:'Vendor invoice INV-8821',
+                          summary:'Matched 3-way (PO ↔ GRN ↔ Invoice) — auto-approved for posting',
+                          basis:'Variance within ±0.5% tolerance for vendor "Sharma Steel & Co." · 1,240 prior matches',
+                          outcome:'Auto-actioned · posted to ledger' },
+                        { t:'10:18', d:'2026-05-12', agent:'Capacity',    action:'suggested',  conf:91, target:'Voult Phase 3 (W26)',
+                          summary:'3 candidates for unstaffed Sr. Engineer plan rows',
+                          basis:'Cross-checked availability, skill match (Phase-3 commissioning), and travel time from current sites',
+                          outcome:'Awaiting review · suggestion #SQ-1041' },
+                        { t:'09:55', d:'2026-05-12', agent:'Productivity',action:'suggested',  conf:null, target:'Crew CRW-North-04',
+                          summary:'Anomaly — productivity dropped 32% week-over-week',
+                          basis:'Hrs/unit moved from 15 → 22 over 4 weeks. Crew lead changed to Inder Singh on May 1.',
+                          outcome:'Awaiting investigation' },
+                        { t:'09:34', d:'2026-05-12', agent:'Compliance',  action:'suggested',  conf:99, target:'3 Height-Work certs',
+                          summary:'Expire in next 14 days — Inder Singh, Neeti Sharma, Pawan Verma',
+                          basis:'Certifications ledger · cross-referenced with active assignments on Aurora and Voult',
+                          outcome:'Awaiting renewal action' },
+                        { t:'09:12', d:'2026-05-12', agent:'Allocator',   action:'accepted',   conf:94, target:'Voult Phase 2',
+                          summary:'Reassigned Rohit Kapoor from Phoenix idle slot — accepted by Andrew',
+                          basis:'Phoenix paused for client review through May 18. Kapoor matched Voult skill profile.',
+                          outcome:'Accepted · ledger updated 09:13' },
+                        { t:'08:46', d:'2026-05-12', agent:'Approval',    action:'auto',       conf:96, target:'Reimbursement R-3318',
+                          summary:'Auto-approved ₹1,420 travel claim — under threshold, attendance verified',
+                          basis:'Claim < ₹2,500 threshold · attendance for May 8 confirmed · no anomalies',
+                          outcome:'Auto-actioned' },
+                        { t:'08:21', d:'2026-05-12', agent:'Variance',    action:'rejected',   conf:78, target:'Project Harbinger',
+                          summary:'Flagged budget drift — dismissed by user as known scope change',
+                          basis:'+2.5% material cost variance. User note: "approved CO from client May 10."',
+                          outcome:'Rejected by Andrew · learning logged' },
+                        { t:'22:14', d:'2026-05-11', agent:'Insights',    action:'suggested',  conf:null, target:'Ad-hoc query',
+                          summary:'Answered "Which projects are over budget right now?"',
+                          basis:'Pulled from Project Plans, Plan vs Actual, Forecast Agent · 3 results returned',
+                          outcome:'Conversation #IN-2284' },
+                        { t:'18:58', d:'2026-05-11', agent:'Capacity',    action:'reverted',   conf:88, target:'Aurora Phase 2',
+                          summary:'Auto-assignment of Pawan Verma reverted — cert expiry conflict',
+                          basis:'Height-Work cert expires May 22, before assignment end date May 28',
+                          outcome:'Reverted by Compliance agent · replanned' },
+                        { t:'17:33', d:'2026-05-11', agent:'Forecast',    action:'accepted',   conf:92, target:'Project Voult',
+                          summary:'EAC update — ₹3.06 Cr (+7.4% vs contract) — accepted into rolling forecast',
+                          basis:'Scope creep in Phase 3 — 4 change orders posted last 2 weeks',
+                          outcome:'Accepted · rolling forecast updated' },
+                        { t:'15:20', d:'2026-05-11', agent:'Receipt',     action:'auto',       conf:99, target:'GRN-4421',
+                          summary:'Goods receipt note auto-reconciled with PO-2210',
+                          basis:'Quantity match · unit price match · vendor "Tata Projects"',
+                          outcome:'Auto-actioned' },
+                    ];
+
+                    // Agent badge color (consistent purple AI palette across all agents in this app)
+                    function agentBadge(name) {
+                        return `<span style="display:inline-block;padding:2px 8px;background:rgba(125,90,210,0.12);color:#7d5ad2;border-radius:4px;font-size:11px;font-weight:500;">${name}</span>`;
+                    }
+
+                    function outcomeBadge(action) {
+                        const map = {
+                            suggested: { l:'Suggested',     fg:'#a86c0c', bg:'rgba(168,108,12,0.12)' },
+                            auto:      { l:'Auto-actioned', fg:'#1E4A72', bg:'rgba(30,74,114,0.12)'   },
+                            accepted:  { l:'Accepted',      fg:'#2d7a4d', bg:'rgba(45,122,77,0.12)'  },
+                            rejected:  { l:'Rejected',      fg:'#b03a2e', bg:'rgba(176,58,46,0.12)'  },
+                            reverted:  { l:'Reverted',      fg:'#7d5ad2', bg:'rgba(125,90,210,0.12)' },
+                        };
+                        const s = map[action] || map.suggested;
+                        return `<span style="display:inline-block;padding:2px 9px;background:${s.bg};color:${s.fg};border-radius:4px;font-size:11px;font-weight:600;">${s.l}</span>`;
+                    }
+
+                    function dayHeader(d) {
+                        const today = '2026-05-12';
+                        if (d === today)        return 'Today · May 12, 2026';
+                        if (d === '2026-05-11') return 'Yesterday · May 11, 2026';
+                        return d;
+                    }
+
+                    function renderEvent(ev, idx) {
+                        return `
+                            <div class="agentact-row" style="display:flex;gap:14px;padding:14px 14px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;transition:all 0.15s;">
+                                <div style="width:54px;flex-shrink:0;text-align:right;">
+                                    <div style="font-size:13px;font-weight:600;color:var(--gray-900);font-family:'Fraunces',serif;">${ev.t}</div>
+                                    <div style="font-size:10px;color:var(--gray-500);">IST</div>
+                                </div>
+                                <div style="width:2px;background:var(--gray-200);border-radius:1px;flex-shrink:0;position:relative;">
+                                    <div style="position:absolute;top:6px;left:-3px;width:8px;height:8px;border-radius:50%;background:#7d5ad2;border:2px solid var(--white);"></div>
+                                </div>
+                                <div style="flex:1;min-width:0;">
+                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
+                                        ${agentBadge(ev.agent)}
+                                        ${outcomeBadge(ev.action)}
+                                        ${ev.conf !== null ? `<span style="font-size:11px;color:var(--gray-500);">Confidence ${ev.conf}%</span>` : ''}
+                                        <span style="font-size:11px;color:var(--gray-500);">·</span>
+                                        <span style="font-size:11px;color:var(--gray-500);">Target: <span style="color:var(--gray-700);font-weight:500;">${ev.target}</span></span>
+                                    </div>
+                                    <div style="font-size:13px;color:var(--gray-900);font-weight:500;line-height:1.5;">${ev.summary}</div>
+                                    <button class="agentact-expand-btn" data-idx="${idx}" style="margin-top:8px;padding:0;background:transparent;color:#7d5ad2;border:none;font-size:12px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:4px;">
+                                        <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="agentact-expand-icon" style="transition:transform 0.15s;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                        Show decision basis
+                                    </button>
+                                    <div class="agentact-detail" data-idx="${idx}" style="display:none;margin-top:10px;padding:12px 14px;background:var(--gray-50);border-radius:6px;border-left:3px solid #7d5ad2;">
+                                        <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;font-weight:600;">Decision basis</div>
+                                        <div style="font-size:12px;color:var(--gray-700);line-height:1.6;margin-bottom:10px;">${ev.basis}</div>
+                                        <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;font-weight:600;">Outcome</div>
+                                        <div style="font-size:12px;color:var(--gray-700);line-height:1.6;">${ev.outcome}</div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    }
+
+                    function render() {
+                        const agent = document.getElementById('agentact-agent-filter').value;
+                        const activeChip = document.querySelector('.agentact-chip.active');
+                        const action = activeChip ? activeChip.dataset.action : 'all';
+
+                        const filtered = EVENTS.filter(ev => {
+                            if (agent !== 'all' && ev.agent !== agent) return false;
+                            if (action !== 'all' && ev.action !== action) return false;
+                            return true;
+                        });
+
+                        const timeline = document.getElementById('agentact-timeline');
+                        const empty    = document.getElementById('agentact-empty');
+
+                        if (filtered.length === 0) {
+                            timeline.innerHTML = '';
+                            empty.style.display = 'block';
+                            return;
+                        }
+                        empty.style.display = 'none';
+
+                        // Group by day
+                        const groups = {};
+                        filtered.forEach((ev, i) => {
+                            (groups[ev.d] = groups[ev.d] || []).push({ev, i: EVENTS.indexOf(ev)});
+                        });
+
+                        let html = '';
+                        Object.keys(groups).forEach(d => {
+                            html += `<div style="display:flex;align-items:center;gap:10px;margin:14px 0 8px;">
+                                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.6px;font-weight:600;color:var(--gray-500);">${dayHeader(d)}</div>
+                                <div style="flex:1;height:1px;background:var(--gray-200);"></div>
+                                <div style="font-size:11px;color:var(--gray-500);">${groups[d].length} event${groups[d].length>1?'s':''}</div>
+                            </div>`;
+                            groups[d].forEach(({ev, i}) => { html += renderEvent(ev, i); });
+                        });
+
+                        timeline.innerHTML = html;
+
+                        // Bind expand buttons
+                        timeline.querySelectorAll('.agentact-expand-btn').forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                const idx = btn.dataset.idx;
+                                const detail = timeline.querySelector(`.agentact-detail[data-idx="${idx}"]`);
+                                const icon = btn.querySelector('.agentact-expand-icon');
+                                const open = detail.style.display === 'block';
+                                detail.style.display = open ? 'none' : 'block';
+                                icon.style.transform = open ? '' : 'rotate(180deg)';
+                                btn.childNodes[2].textContent = open ? ' Show decision basis' : ' Hide decision basis';
+                            });
+                        });
+                    }
+
+                    // Filter bindings
+                    document.getElementById('agentact-agent-filter').addEventListener('change', render);
+                    document.querySelectorAll('.agentact-chip').forEach(chip => {
+                        chip.addEventListener('click', () => {
+                            document.querySelectorAll('.agentact-chip').forEach(c => {
+                                c.classList.remove('active');
+                                c.style.background = 'var(--white)';
+                                c.style.color = 'var(--gray-700)';
+                                c.style.borderColor = 'var(--gray-200)';
+                            });
+                            chip.classList.add('active');
+                            chip.style.background = 'var(--primary)';
+                            chip.style.color = '#fff';
+                            chip.style.borderColor = 'var(--primary)';
+                            render();
+                        });
+                    });
+                    document.getElementById('agentact-range').addEventListener('change', render);
+
+                    // Lazy-init: render the first time the page becomes visible (since it may start hidden)
+                    const page = document.getElementById('page-agent-activity');
+                    let rendered = false;
+                    function maybeRender() {
+                        if (!rendered && page.classList.contains('active')) { render(); rendered = true; }
+                    }
+                    maybeRender();
+                    new MutationObserver(maybeRender).observe(page, {attributes:true, attributeFilter:['class']});
+                })();
+                </script>
+
+                <style>
+                    #page-agent-activity .agentact-scroll {
+                        flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden;
+                        padding: 4px 4px 24px 4px;
+                        display: flex; flex-direction: column;
+                    }
+                    #page-agent-activity .agentact-scroll::-webkit-scrollbar { width: 8px; }
+                    #page-agent-activity .agentact-scroll::-webkit-scrollbar-track { background: transparent; }
+                    #page-agent-activity .agentact-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
+                    [data-dark="true"] #page-agent-activity .agentact-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); }
+                    #page-agent-activity .agentact-row:hover { border-color: rgba(125,90,210,0.4); box-shadow: 0 2px 8px rgba(125,90,210,0.06); }
+                </style>
+
+
+                <!-- ═══ PAGE: AGENT PERFORMANCE ═══ -->
+                <div id="page-agent-performance" class="page-section">
+                    <div class="agentperf-scroll">
+
+                        <!-- Stats banner -->
+                        <div class="stats-banner" style="margin-bottom:14px;flex-shrink:0;">
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon" style="background:rgba(125,90,210,0.12);color:#7d5ad2;">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Active Agents</div>
+                                    <div style="font-size:22px;font-weight:600;color:var(--gray-900);font-family:'Fraunces',serif;">9 <span style="font-size:12px;color:var(--gray-500);font-weight:500;">/ 9</span></div>
+                                </div>
+                            </div>
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon" style="background:rgba(45,122,77,0.12);color:#2d7a4d;">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Avg Acceptance</div>
+                                    <div style="font-size:22px;font-weight:600;color:var(--gray-900);font-family:'Fraunces',serif;" id="agentperf-stat-acceptance">89%</div>
+                                </div>
+                            </div>
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon" style="background:rgba(30,74,114,0.12);color:#1E4A72;">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Avg Latency</div>
+                                    <div style="font-size:22px;font-weight:600;color:var(--gray-900);font-family:'Fraunces',serif;" id="agentperf-stat-latency">2.4s</div>
+                                </div>
+                            </div>
+                            <div class="stats-banner-item">
+                                <div class="stats-banner-icon" style="background:rgba(200,131,122,0.18);color:var(--cta);">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Value Delivered</div>
+                                    <div style="font-size:22px;font-weight:600;color:var(--gray-900);font-family:'Fraunces',serif;" id="agentperf-stat-value">₹38.2 L</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Range selector -->
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-shrink:0;">
+                            <div style="display:flex;align-items:center;gap:10px;">
+                                <span style="font-size:13px;font-weight:600;color:var(--gray-900);">Performance window</span>
+                                <div id="agentperf-range" style="display:flex;gap:0;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;padding:3px;">
+                                    <button class="agentperf-range-btn" data-range="7"  style="padding:6px 14px;background:transparent;color:var(--gray-700);border:none;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;">7 days</button>
+                                    <button class="agentperf-range-btn active" data-range="30" style="padding:6px 14px;background:var(--primary);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;">30 days</button>
+                                    <button class="agentperf-range-btn" data-range="90" style="padding:6px 14px;background:transparent;color:var(--gray-700);border:none;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;">90 days</button>
+                                </div>
+                            </div>
+                            <div style="font-size:11px;color:var(--gray-500);">Last updated: 2 min ago</div>
+                        </div>
+
+                        <!-- Agent scorecard grid -->
+                        <div id="agentperf-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;flex-shrink:0;"></div>
+
+                    </div>
+                </div>
+
+                <script>
+                (function() {
+                    // ── Agent roster with 7d/30d/90d performance data ──
+                    // accept: acceptance rate %, sugg: suggestions made, lat: avg latency seconds,
+                    // value: value delivered (₹ Lakhs string), trend: 7-point sparkline of acceptance %
+                    const AGENTS = [
+                        { name:'Receipt',      desc:'Invoice & GRN auto-matching',
+                          d7:  { accept:99, sugg:412, lat:0.8, value:'₹6.4 L', trend:[97,98,99,98,99,99,99] },
+                          d30: { accept:98, sugg:1840,lat:0.9, value:'₹24.8 L',trend:[96,97,97,98,98,98,99] },
+                          d90: { accept:97, sugg:5210,lat:0.9, value:'₹68.2 L',trend:[94,95,96,97,97,98,98] },
+                          status:'healthy' },
+                        { name:'Approval',     desc:'Reimbursement & PO auto-approval',
+                          d7:  { accept:96, sugg:184, lat:1.2, value:'₹3.1 L', trend:[94,95,96,95,96,96,97] },
+                          d30: { accept:95, sugg:782, lat:1.3, value:'₹11.8 L',trend:[92,93,94,94,95,95,96] },
+                          d90: { accept:94, sugg:2240,lat:1.4, value:'₹32.4 L',trend:[88,90,91,92,93,94,94] },
+                          status:'healthy' },
+                        { name:'Compliance',   desc:'Cert & safety conformance watch',
+                          d7:  { accept:99, sugg:18,  lat:1.5, value:'—',      trend:[100,100,100,98,99,99,100] },
+                          d30: { accept:99, sugg:78,  lat:1.5, value:'—',      trend:[98,99,99,99,99,100,99] },
+                          d90: { accept:98, sugg:224, lat:1.6, value:'—',      trend:[97,98,98,98,99,99,98] },
+                          status:'healthy' },
+                        { name:'Forecast',     desc:'EAC + project risk',
+                          d7:  { accept:91, sugg:24,  lat:3.2, value:'₹4.8 L', trend:[88,90,92,91,93,90,92] },
+                          d30: { accept:89, sugg:96,  lat:3.4, value:'₹14.2 L',trend:[85,86,88,88,90,90,91] },
+                          d90: { accept:86, sugg:284, lat:3.5, value:'₹38.6 L',trend:[80,82,84,85,86,87,88] },
+                          status:'healthy' },
+                        { name:'Allocator',    desc:'Resource staffing suggestions',
+                          d7:  { accept:88, sugg:42,  lat:2.1, value:'—',      trend:[85,86,89,88,89,88,90] },
+                          d30: { accept:87, sugg:178, lat:2.2, value:'—',      trend:[82,84,86,86,87,88,88] },
+                          d90: { accept:85, sugg:512, lat:2.3, value:'—',      trend:[78,80,82,84,85,86,87] },
+                          status:'healthy' },
+                        { name:'Capacity',     desc:'Skill match + burnout watch',
+                          d7:  { accept:84, sugg:38,  lat:2.6, value:'—',      trend:[80,82,84,83,85,84,86] },
+                          d30: { accept:82, sugg:152, lat:2.7, value:'—',      trend:[76,78,80,81,82,83,82] },
+                          d90: { accept:80, sugg:438, lat:2.8, value:'—',      trend:[72,74,76,78,79,80,81] },
+                          status:'watch' },
+                        { name:'Variance',     desc:'Budget drift detection',
+                          d7:  { accept:78, sugg:14,  lat:2.9, value:'₹2.4 L', trend:[72,74,78,76,80,78,80] },
+                          d30: { accept:76, sugg:54,  lat:3.0, value:'₹8.2 L', trend:[68,70,72,74,76,77,78] },
+                          d90: { accept:74, sugg:162, lat:3.1, value:'₹21.4 L',trend:[62,65,68,71,73,75,76] },
+                          status:'watch' },
+                        { name:'Productivity', desc:'Hrs-per-unit anomaly',
+                          d7:  { accept:71, sugg:8,   lat:4.1, value:'—',      trend:[64,68,72,70,74,72,74] },
+                          d30: { accept:68, sugg:32,  lat:4.2, value:'—',      trend:[60,62,65,67,69,70,71] },
+                          d90: { accept:65, sugg:96,  lat:4.3, value:'—',      trend:[54,57,60,62,64,66,67] },
+                          status:'tuning' },
+                        { name:'Insights',     desc:'Natural-language Q&A',
+                          d7:  { accept:94, sugg:64,  lat:2.1, value:'—',      trend:[90,92,94,93,95,94,96] },
+                          d30: { accept:93, sugg:268, lat:2.2, value:'—',      trend:[88,90,92,92,93,94,94] },
+                          d90: { accept:91, sugg:782, lat:2.3, value:'—',      trend:[84,86,88,90,91,92,92] },
+                          status:'healthy' },
+                    ];
+
+                    function statusBadge(s) {
+                        const map = {
+                            healthy:{l:'Healthy',  fg:'#2d7a4d', bg:'rgba(45,122,77,0.12)'},
+                            watch:  {l:'Watch',    fg:'#a86c0c', bg:'rgba(168,108,12,0.12)'},
+                            tuning: {l:'Tuning',   fg:'#7d5ad2', bg:'rgba(125,90,210,0.12)'},
+                        };
+                        const v = map[s];
+                        return `<span style="display:inline-flex;align-items:center;gap:5px;padding:2px 9px;background:${v.bg};color:${v.fg};border-radius:999px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.3px;">
+                            <span style="width:6px;height:6px;border-radius:50%;background:${v.fg};"></span>${v.l}</span>`;
+                    }
+
+                    function acceptanceColor(pct) {
+                        if (pct >= 90) return '#2d7a4d';
+                        if (pct >= 80) return '#a86c0c';
+                        return '#b03a2e';
+                    }
+
+                    function renderCard(a, period, idx) {
+                        const p = a[period];
+                        return `
+                            <div class="agentperf-card" style="background:var(--white);border:1px solid var(--gray-200);border-radius:10px;padding:18px;transition:all 0.15s;">
+                                <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;">
+                                    <div style="display:flex;gap:10px;align-items:center;">
+                                        <div style="width:36px;height:36px;border-radius:8px;background:rgba(125,90,210,0.12);display:flex;align-items:center;justify-content:center;color:#7d5ad2;">
+                                            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                        </div>
+                                        <div>
+                                            <div style="font-size:15px;font-weight:600;color:var(--gray-900);">${a.name}</div>
+                                            <div style="font-size:11px;color:var(--gray-500);">${a.desc}</div>
+                                        </div>
+                                    </div>
+                                    ${statusBadge(a.status)}
+                                </div>
+
+                                <!-- Hero metric: acceptance % -->
+                                <div style="display:flex;align-items:flex-end;gap:12px;margin-bottom:12px;">
+                                    <div>
+                                        <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">Acceptance</div>
+                                        <div style="font-size:30px;font-weight:600;color:${acceptanceColor(p.accept)};font-family:'Fraunces',serif;line-height:1;margin-top:2px;">${p.accept}<span style="font-size:16px;">%</span></div>
+                                    </div>
+                                    <div style="flex:1;height:42px;position:relative;">
+                                        <canvas id="agentperf-spark-${idx}" style="max-height:42px;"></canvas>
+                                    </div>
+                                </div>
+
+                                <!-- Secondary KPIs -->
+                                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding-top:12px;border-top:1px dashed var(--gray-200);">
+                                    <div>
+                                        <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Suggestions</div>
+                                        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-top:2px;">${p.sugg.toLocaleString()}</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Latency</div>
+                                        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-top:2px;">${p.lat}s</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.4px;">Value</div>
+                                        <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-top:2px;">${p.value}</div>
+                                    </div>
+                                </div>
+
+                                <button class="agentperf-detail-btn" data-agent="${a.name}" style="width:100%;margin-top:14px;padding:8px 12px;background:var(--gray-50);color:var(--gray-700);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
+                                    View detail
+                                    <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>`;
+                    }
+
+                    let sparkCharts = [];
+
+                    function buildSpark(canvasId, trend, accept) {
+                        const ctx = document.getElementById(canvasId);
+                        if (!ctx) return null;
+                        return new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: trend.map((_,i) => ''),
+                                datasets: [{
+                                    data: trend,
+                                    borderColor: acceptanceColor(accept),
+                                    backgroundColor: acceptanceColor(accept) + '20',
+                                    fill: true, tension: 0.35,
+                                    borderWidth: 2, pointRadius: 0,
+                                }]
+                            },
+                            options: {
+                                responsive:true, maintainAspectRatio:false,
+                                plugins:{legend:{display:false}, tooltip:{
+                                    enabled:true,
+                                    callbacks:{title:()=>'', label:(c)=>c.parsed.y+'%'}
+                                }},
+                                scales:{x:{display:false},y:{display:false,min:Math.min(...trend)-3,max:Math.max(...trend)+3}}
+                            }
+                        });
+                    }
+
+                    function render(period) {
+                        const grid = document.getElementById('agentperf-grid');
+                        // Tear down existing sparkline charts before re-render
+                        sparkCharts.forEach(c => { try { c.destroy(); } catch(e){} });
+                        sparkCharts = [];
+
+                        grid.innerHTML = AGENTS.map((a, i) => renderCard(a, period, i)).join('');
+
+                        // Build sparklines
+                        AGENTS.forEach((a, i) => {
+                            const chart = buildSpark(`agentperf-spark-${i}`, a[period].trend, a[period].accept);
+                            if (chart) sparkCharts.push(chart);
+                        });
+
+                        // Update top stats banner
+                        const totalSugg   = AGENTS.reduce((s, a) => s + a[period].sugg, 0);
+                        const avgAccept   = Math.round(AGENTS.reduce((s, a) => s + a[period].accept * a[period].sugg, 0) / totalSugg);
+                        const avgLat      = (AGENTS.reduce((s, a) => s + a[period].lat, 0) / AGENTS.length).toFixed(1);
+                        document.getElementById('agentperf-stat-acceptance').innerHTML = avgAccept + '%';
+                        document.getElementById('agentperf-stat-latency').innerHTML    = avgLat + 's';
+                        // Value: sum of L values (parse simple)
+                        const totalValueL = AGENTS.reduce((s, a) => {
+                            const m = /(\d+(?:\.\d+)?)\s*L/.exec(a[period].value);
+                            return s + (m ? parseFloat(m[1]) : 0);
+                        }, 0);
+                        document.getElementById('agentperf-stat-value').textContent = '₹' + totalValueL.toFixed(1) + ' L';
+
+                        // Bind detail buttons (placeholder — navigates to command center)
+                        grid.querySelectorAll('.agentperf-detail-btn').forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                if (typeof showPage === 'function') showPage('command-center', 'AI Command Center');
+                            });
+                            btn.addEventListener('mouseenter', () => {
+                                btn.style.background = 'var(--white)';
+                                btn.style.borderColor = '#7d5ad2';
+                                btn.style.color = '#7d5ad2';
+                            });
+                            btn.addEventListener('mouseleave', () => {
+                                btn.style.background = 'var(--gray-50)';
+                                btn.style.borderColor = 'var(--gray-200)';
+                                btn.style.color = 'var(--gray-700)';
+                            });
+                        });
+                    }
+
+                    let currentPeriod = 'd30';
+
+                    document.querySelectorAll('.agentperf-range-btn').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            document.querySelectorAll('.agentperf-range-btn').forEach(b => {
+                                b.classList.remove('active');
+                                b.style.background = 'transparent';
+                                b.style.color = 'var(--gray-700)';
+                            });
+                            btn.classList.add('active');
+                            btn.style.background = 'var(--primary)';
+                            btn.style.color = '#fff';
+                            currentPeriod = 'd' + btn.dataset.range;
+                            render(currentPeriod);
+                        });
+                    });
+
+                    // Lazy-init: only render once page becomes active (Chart.js needs visible canvas size)
+                    const page = document.getElementById('page-agent-performance');
+                    let rendered = false;
+                    function maybeRender() {
+                        if (!rendered && page.classList.contains('active')) { render(currentPeriod); rendered = true; }
+                    }
+                    maybeRender();
+                    new MutationObserver(maybeRender).observe(page, {attributes:true, attributeFilter:['class']});
+                })();
+                </script>
+
+                <style>
+                    #page-agent-performance .agentperf-scroll {
+                        flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden;
+                        padding: 4px 4px 24px 4px;
+                        display: flex; flex-direction: column;
+                    }
+                    #page-agent-performance .agentperf-scroll::-webkit-scrollbar { width: 8px; }
+                    #page-agent-performance .agentperf-scroll::-webkit-scrollbar-track { background: transparent; }
+                    #page-agent-performance .agentperf-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
+                    [data-dark="true"] #page-agent-performance .agentperf-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); }
+                    #page-agent-performance .agentperf-card:hover { border-color: rgba(125,90,210,0.4); box-shadow: 0 4px 16px rgba(125,90,210,0.08); transform: translateY(-1px); }
+                </style>
+
 
             </main>
         </div>
